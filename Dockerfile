@@ -7,17 +7,17 @@ COPY package*.json ./
 RUN yarn install
 
 COPY . .
-RUN yarn api
 
-# Etapa 2: Produção
+RUN yarn build
+
 FROM node:22
 
 WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/dist ./dist
-COPY package*.json ./
+COPY package*.json yarn.lock ./
 
-RUN npm install --omit=dev
+RUN yarn install --production
 
 EXPOSE 3000
 
