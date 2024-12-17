@@ -1,7 +1,7 @@
 import app from './app';
 import Logger from './library/Logger';
 import loadingRoutes from './config/loadingRoutes';
-const port = 3333;
+const port = process.env.PORT || 3000;
 const log = new Logger();
 
 const application = loadingRoutes(app);
