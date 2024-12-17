@@ -4,6 +4,7 @@ FROM node:22 AS builder
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+
 RUN yarn install
 
 COPY . .
@@ -15,7 +16,7 @@ FROM node:22
 WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/dist ./dist
-COPY package*.json yarn.lock ./
+COPY package*.json ./
 
 RUN yarn install --production
 
