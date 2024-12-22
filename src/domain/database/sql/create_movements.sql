@@ -1,4 +1,4 @@
-CREATE TABLE transactions (
+CREATE TABLE movements (
     id SERIAL PRIMARY KEY,
     account_id INTEGER NOT NULL REFERENCES accounts(id),
     type VARCHAR(10) NOT NULL CHECK (type IN ('income', 'expense')),
